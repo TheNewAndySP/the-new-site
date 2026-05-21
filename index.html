@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0C0B09">
+<meta name="supported-color-schemes" content="dark">
+<title>The New — Estúdio criativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Albert+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark only;
+  /* Warm dark */
+  --bg: #0C0B09;
+  --bg-soft: #161410;
+  --fg: #ECE7DA;
+  --fg-soft: #C9C1AE;
+  --muted: #7A7464;
+  --border: rgba(236, 231, 218, 0.10);
+  --border-strong: rgba(236, 231, 218, 0.22);
+  --accent: #DC5A2E;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Albert Sans', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  background-color: #0C0B09 !important;
+  color-scheme: dark only;
+  forced-color-adjust: none;
+}
+body {
+  background: #0C0B09 !important;
+  background-color: #0C0B09 !important;
+  color: #ECE7DA;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  forced-color-adjust: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 300;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.container { max-width: 1440px; margin: 0 auto; padding: 0 40px; }
+
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.scene-marker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.scene-marker::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; }
+
+/* Image treatment — warm cinematic */
+.img-treated {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.6) sepia(0.18) brightness(0.88) contrast(1.08) saturate(0.95);
+  transition: filter 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─────────── NAV ─────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+nav .logo {
+  font-family: var(--serif);
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+nav .logo .dot { color: var(--accent); }
+nav .menu {
+  display: flex;
+  gap: 36px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+nav .menu a { color: var(--fg); opacity: 0.65; transition: opacity 0.4s; }
+nav .menu a:hover { opacity: 1; }
+.cta {
+  padding: 11px 22px;
+  border: 1px solid var(--fg);
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--fg);
+  transition: all 0.4s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.cta:hover { background: var(--fg); color: var(--bg); }
+.cta .arr { font-family: var(--serif); font-size: 16px; transition: transform 0.3s; }
+.cta:hover .arr { transform: translateX(4px); }
+
+/* ─────────── SCENE (bloco padrão preto) ─────────── */
+.scene {
+  padding: 200px 40px;
+  position: relative;
+}
+.scene-head {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  margin-bottom: 120px;
+  align-items: start;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.scene-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.scene-head h2 em { font-style: italic; color: var(--accent); }
+
+/* ─────────── HERO ─────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding: 160px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(0.75) sepia(0.22) brightness(0.5) contrast(1.12);
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(12,11,9,0.5) 0%, rgba(12,11,9,0.35) 40%, rgba(12,11,9,0.98) 100%),
+    radial-gradient(ellipse at 70% 30%, rgba(220,90,46,0.10), transparent 60%);
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(64px, 13vw, 220px);
+  line-height: 0.86;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  max-width: 1400px;
+}
+.hero-headline em { font-style: italic; color: var(--accent); }
+.hero-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  gap: 40px;
+  margin-top: 96px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-strong);
+  position: relative;
+  z-index: 2;
+}
+.hero-tagline {
+  max-width: 460px;
+  font-size: 15px;
+  color: rgba(236, 231, 218, 0.78);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.hero-coords {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(236, 231, 218, 0.7);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.hero-cta-wrap { text-align: center; }
+.scroll-hint {
+  position: absolute;
+  top: 110px;
+  right: 40px;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(236, 231, 218, 0.6);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ─────────── CINEMATIC SCENE (full-bleed com foto de fundo) ─────────── */
+.cinematic {
+  position: relative;
+  min-height: 90vh;
+  padding: 180px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+.cinematic-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* parallax — desativado no mobile */
+  filter: grayscale(0.7) sepia(0.22) brightness(0.45) contrast(1.1) saturate(0.95);
+  transform: scale(1.05);
+}
+.cinematic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at center, rgba(12,11,9,0.4) 0%, rgba(12,11,9,0.92) 80%),
+    linear-gradient(180deg, rgba(12,11,9,0.55) 0%, transparent 30%, transparent 70%, rgba(12,11,9,0.55) 100%);
+  pointer-events: none;
+}
+.cinematic-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+}
+.cinematic-quote {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 112px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 400;
+  margin-top: 28px;
+}
+.cinematic-quote em { font-style: italic; color: var(--accent); }
+.cinematic-quote .light { color: var(--fg-soft); font-style: italic; opacity: 0.7; }
+.cinematic-attrib {
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(236, 231, 218, 0.7);
+}
+
+/* ─────────── REEL ─────────── */
+.reel-block {
+  padding: 140px 0 160px;
+  overflow: hidden;
+}
+.reel-head {
+  padding: 0 40px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.reel-head h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.reel-head h3 em { font-style: italic; color: var(--accent); }
+.reel {
+  display: flex;
+  gap: 28px;
+  padding: 0 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.reel::-webkit-scrollbar { display: none; }
+.reel-item {
+  flex: 0 0 auto;
+  width: 380px;
+  height: 480px;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-soft);
+  border-radius: 4px;
+}
+.reel-item:nth-child(odd) { height: 540px; align-self: start; }
+.reel-item:nth-child(even) { height: 440px; align-self: end; }
+.reel-item:hover .img-treated {
+  filter: grayscale(0) sepia(0) brightness(1) contrast(1.05) saturate(1);
+  transform: scale(1.04);
+}
+.reel-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+}
+.reel-caption-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+.reel-caption-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(236, 231, 218, 0.78);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.reel-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(12,11,9,0.92) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─────────── MANIFESTO ─────────── */
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 100px;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.manifesto-grid p {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 56px);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+.manifesto-grid p em { font-style: italic; color: var(--accent); }
+.manifesto-grid p .quiet { color: var(--muted); font-style: italic; }
+.manifesto-img {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-radius: 4px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+.manifesto-img:hover .img-treated {
+  filter: grayscale(0) sepia(0) brightness(1) contrast(1.05) saturate(1);
+}
+
+/* ─────────── SERVIÇOS ─────────── */
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border-strong);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.service {
+  padding: 64px 32px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 24px;
+  align-items: start;
+  transition: background 0.6s;
+}
+.service:nth-child(2n) { border-left: 1px solid var(--border); }
+.service:hover { background: linear-gradient(90deg, rgba(220, 90, 46, 0.06), transparent); }
+.service-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  padding-top: 16px;
+}
+.service-name {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  display: block;
+}
+.service-desc {
+  font-size: 14px;
+  color: var(--fg-soft);
+  line-height: 1.65;
+  font-weight: 300;
+  max-width: 460px;
+  opacity: 0.85;
+}
+
+/* ─────────── MÉTODO ─────────── */
+.method-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border-strong);
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.phase {
+  background: var(--bg);
+  padding: 56px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  min-height: 420px;
+  transition: background 0.6s;
+}
+.phase:hover { background: var(--bg-soft); }
+.phase-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+}
+.phase-content h3 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 3vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+.phase-content p {
+  font-size: 14px;
+  color: var(--fg-soft);
+  line-height: 1.65;
+  font-weight: 300;
+  opacity: 0.8;
+}
+.method-note {
+  margin: 32px auto 0;
+  padding: 16px 22px;
+  border: 1px dashed var(--border-strong);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  max-width: 720px;
+  width: calc(100% - 80px);
+}
+
+/* ─────────── FOUNDERS ─────────── */
+.founders {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.founder { position: relative; }
+.founder-img {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--bg-soft);
+  margin-bottom: 32px;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+.founder:hover .img-treated {
+  filter: grayscale(0) sepia(0) brightness(1) contrast(1.05) saturate(1);
+  transform: scale(1.03);
+}
+.founder-credits {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.founder-name {
+  font-family: var(--serif);
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.founder-role {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.founder-bio {
+  font-size: 15px;
+  color: var(--fg-soft);
+  line-height: 1.65;
+  font-weight: 300;
+  max-width: 460px;
+  opacity: 0.85;
+}
+
+/* ─────────── STACK marquee ─────────── */
+.stack-block { padding: 180px 0; overflow: hidden; }
+.marquee-wrap {
+  overflow: hidden;
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.marquee {
+  display: flex;
+  gap: 60px;
+  animation: scroll 60s linear infinite;
+  width: max-content;
+}
+.marquee span {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 108px);
+  font-style: italic;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  transition: color 0.5s;
+}
+.marquee span:hover { color: var(--accent); }
+.marquee span::after {
+  content: '●';
+  font-size: 14px;
+  color: var(--accent);
+  font-style: normal;
+}
+@keyframes scroll { to { transform: translateX(-50%); } }
+
+/* ─────────── CASES grid ─────────── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.case-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--bg-soft);
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+.case-card-img { aspect-ratio: 4/5; overflow: hidden; position: relative; }
+.case-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(12,11,9,0.96) 100%);
+  pointer-events: none;
+}
+.case-card:hover .img-treated {
+  filter: grayscale(0) sepia(0) brightness(1) contrast(1.05) saturate(1);
+  transform: scale(1.04);
+}
+.case-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+}
+.case-card-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(236, 231, 218, 0.78);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+.case-card-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 68px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+  color: var(--fg);
+}
+.case-card-arrow {
+  font-family: var(--serif);
+  font-size: 36px;
+  color: var(--fg);
+  transition: transform 0.5s, color 0.5s;
+}
+.case-card:hover .case-card-arrow {
+  transform: translate(8px, -8px);
+  color: var(--accent);
+}
+.case-card:nth-child(2) .case-card-img,
+.case-card:nth-child(3) .case-card-img { aspect-ratio: 5/4; }
+
+/* ─────────── CLIENTES + DEPOIMENTOS ─────────── */
+.clients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 64px;
+  justify-content: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  border-bottom: 1px solid var(--border);
+}
+.clients span {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.4vw, 56px);
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: -0.015em;
+  transition: color 0.4s;
+  cursor: default;
+}
+.clients span:hover { color: var(--fg); }
+.testimonials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  margin: 100px auto 0;
+  max-width: 1440px;
+}
+.testimonial { background: var(--bg); padding: 72px 56px; }
+.testimonial-quote {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.testimonial-quote::before { content: '"'; color: var(--accent); margin-right: 4px; }
+.testimonial-author {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ─────────── CTA FINAL ─────────── */
+.cta-final {
+  position: relative;
+  padding: 220px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+.cta-final-bg { position: absolute; inset: 0; z-index: 0; }
+.cta-final-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(0.9) sepia(0.28) brightness(0.32) contrast(1.12);
+}
+.cta-final-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(12,11,9,0.4) 0%, rgba(12,11,9,0.96) 80%),
+    radial-gradient(ellipse at 30% 70%, rgba(220,90,46,0.10), transparent 60%);
+}
+.cta-final h2, .cta-final a, .cta-final .scene-marker { position: relative; z-index: 2; }
+.cta-final h2 {
+  font-family: var(--serif);
+  font-size: clamp(56px, 9.5vw, 168px);
+  line-height: 0.92;
+  letter-spacing: -0.038em;
+  margin-bottom: 72px;
+  font-weight: 400;
+}
+.cta-final h2 em { font-style: italic; color: var(--accent); }
+.cta-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 28px 48px;
+  border: 1px solid var(--fg);
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: all 0.5s;
+  color: var(--fg);
+}
+.cta-large:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+  letter-spacing: 0.2em;
+}
+.cta-large .arr { font-family: var(--serif); font-size: 22px; transition: transform 0.4s; }
+.cta-large:hover .arr { transform: translateX(6px); }
+
+/* ─────────── FOOTER ─────────── */
+footer {
+  padding: 100px 40px 40px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 2.2fr 1fr 1fr 1fr;
+  gap: 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.footer-brand {
+  font-family: var(--serif);
+  font-size: clamp(80px, 9vw, 168px);
+  line-height: 0.85;
+  letter-spacing: -0.035em;
+}
+.footer-brand .dot { color: var(--accent); }
+footer h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+footer a, footer p {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--fg);
+  opacity: 0.85;
+  transition: color 0.4s, opacity 0.4s;
+  font-weight: 300;
+}
+footer a:hover { opacity: 1; color: var(--accent); }
+.copyright {
+  grid-column: 1 / -1;
+  padding-top: 64px;
+  margin-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─────────── SCROLL REVEAL ─────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+
+/* ─────────── RESPONSIVE ─────────── */
+@media (max-width: 900px) {
+  nav, footer, .cta-final, .scene, .hero, .cinematic { padding-left: 24px; padding-right: 24px; }
+  .scene { padding-top: 120px; padding-bottom: 120px; }
+  .cinematic { padding-top: 140px; padding-bottom: 140px; min-height: 80vh; }
+  .cinematic-bg { background-attachment: scroll; } /* iOS não suporta fixed bg */
+  .scene-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 72px; }
+  .manifesto-grid { grid-template-columns: 1fr; gap: 56px; }
+  .services { grid-template-columns: 1fr; }
+  .service:nth-child(2n) { border-left: 0; }
+  .method-phases { grid-template-columns: 1fr 1fr; }
+  .phase { min-height: 300px; gap: 56px; padding: 36px 24px; }
+  .cases-grid { grid-template-columns: 1fr; gap: 20px; }
+  .founders { grid-template-columns: 1fr; gap: 80px; }
+  .testimonials { grid-template-columns: 1fr; margin-top: 56px; }
+  .testimonial { padding: 48px 28px; }
+  .hero-meta { grid-template-columns: 1fr; gap: 32px; }
+  .hero-coords, .hero-cta-wrap { text-align: left; }
+  footer { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand { grid-column: 1 / -1; }
+  nav .menu { display: none; }
+  nav { padding: 20px 24px; }
+  .scroll-hint { display: none; }
+  .reel-item { width: 280px; height: 360px; }
+  .reel-item:nth-child(odd), .reel-item:nth-child(even) { height: 360px; align-self: auto; }
+  .case-card-content { padding: 28px; }
+}
+@media (max-width: 540px) {
+  .method-phases { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">The New<span class="dot">.</span></a>
+  <div class="menu">
+    <a href="#trabalho">Trabalho</a>
+    <a href="#metodo">Método</a>
+    <a href="#founders">Sócios</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <a href="#contato" class="cta">Briefing <span class="arr">→</span></a>
+</nav>
+
+<!-- ═══ SCENE 00 · HERO ═══ -->
+<section class="hero">
+  <!-- TROCAR: hero image cinematográfica (1920x1200) -->
+  <div class="hero-bg">
+    <img src="https://picsum.photos/seed/herofinal01/1920/1200" alt="">
+  </div>
+  <div class="scroll-hint">Scene 00 · Scroll ↓</div>
+  <div class="hero-content">
+    <p class="label" style="margin-bottom: 56px;">Estúdio criativo · São Paulo · MMXXVI</p>
+    <h1 class="hero-headline">
+      O que vem <em>depois</em><br>
+      não se parece com<br>
+      o que veio <em>antes.</em>
+    </h1>
+  </div>
+  <div class="hero-meta">
+    <p class="hero-tagline">
+      Estúdio criativo dedicado a branding, varejo, motion e experiência de marca. Atendemos projetos longos de reposicionamento e frentes pontuais com prazo apertado, sempre com direção sênior, repertório e capacidade real de execução.
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#contato" class="cta">Iniciar conversa <span class="arr">→</span></a>
+    </div>
+    <p class="hero-coords">—23.5505° S<br>—46.6333° W</p>
+  </div>
+</section>
+
+<!-- ═══ REEL ═══ -->
+<section class="reel-block">
+  <div class="reel-head">
+    <h3>Em produção <em>/ agora</em></h3>
+    <p class="label">Arraste →</p>
+  </div>
+  <div class="reel">
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal01/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Starbucks</span><span class="reel-caption-tag">Retail · Campanha</span></div></div>
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal02/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">TGI Fridays</span><span class="reel-caption-tag">Branding · PDV</span></div></div>
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal03/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Honda</span><span class="reel-caption-tag">Campanha</span></div></div>
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal04/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">OGGI</span><span class="reel-caption-tag">Naming · embalagem</span></div></div>
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal05/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Drogaria Iguatemi</span><span class="reel-caption-tag">Plataforma</span></div></div>
+    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal06/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Pringles</span><span class="reel-caption-tag">Direção criativa</span></div></div>
+  </div>
+</section>
+
+<!-- ═══ CINEMATIC A · transição depois do reel ═══ -->
+<!-- TROCAR: bg-image cinematográfica horizontal, mood evocativo -->
+<section class="cinematic">
+  <div class="cinematic-bg" style="background-image: url('https://picsum.photos/seed/cinematicA08/2000/1300');"></div>
+  <div class="cinematic-inner reveal">
+    <span class="scene-marker" style="justify-content: center; margin: 0 auto 0; display: inline-flex;">Cena intermediária · I</span>
+    <p class="cinematic-quote">
+      Cada projeto é uma <em>cena.</em><br>
+      <span class="light">Cada marca,</span><br>
+      um filme próprio.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ SCENE 01 · MANIFESTO ═══ -->
+<section class="scene">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 01 · Manifesto</span></div>
+  </div>
+  <div class="manifesto-grid">
+    <p class="reveal">
+      Marca não é mais identidade visual. <em>É posição</em>, é narrativa, e principalmente é o que acontece quando ela vira <em>lugar, embalagem, vídeo, experiência.</em> The New existe para marcas que precisam de quem pense antes de executar, e que execute <em>de verdade.</em>
+    </p>
+    <!-- TROCAR: imagem vertical conceitual -->
+    <div class="manifesto-img reveal reveal-delay-1">
+      <img src="https://picsum.photos/seed/manifestofinal/800/1100" class="img-treated" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCENE 02 · SERVIÇOS ═══ -->
+<section class="scene" id="servicos">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 02 · Serviços</span></div>
+    <h2>Seis frentes,<br>um mesmo modo<br>de <em>pensar.</em></h2>
+  </div>
+  <div class="services reveal">
+    <div class="service"><span class="service-num">/ 01</span><div><span class="service-name">Estratégia & naming</span><p class="service-desc">Posicionamento, plataforma de marca, naming e arquitetura. O trabalho que define no que a marca acredita e o que ela vai deixar de ser.</p></div></div>
+    <div class="service"><span class="service-num">/ 02</span><div><span class="service-name">Identidade & sistema</span><p class="service-desc">Sistema visual, design e linguagem. Identidade como decisão de marca, não como entrega de logotipo.</p></div></div>
+    <div class="service"><span class="service-num">/ 03</span><div><span class="service-name">Direção criativa & campanha</span><p class="service-desc">Conceito, campanha integrada e narrativa. A camada onde a estratégia vira algo que as pessoas sentem.</p></div></div>
+    <div class="service"><span class="service-num">/ 04</span><div><span class="service-name">Varejo & PDV</span><p class="service-desc">Identidade aplicada ao ponto de venda, comunicação de loja, campanha de varejo e embalagem. Marca que precisa funcionar onde a decisão acontece.</p></div></div>
+    <div class="service"><span class="service-num">/ 05</span><div><span class="service-name">Motion & audiovisual</span><p class="service-desc">Filmes de marca, social content, motion design e narrativas visuais. Linguagem premium aplicada ao formato que mais cresce.</p></div></div>
+    <div class="service"><span class="service-num">/ 06</span><div><span class="service-name">Experiência & cenografia</span><p class="service-desc">Eventos, ativações imersivas, retail design e experiências em VR. Quando a marca precisa virar lugar.</p></div></div>
+  </div>
+</section>
+
+<!-- ═══ SCENE 03 · MÉTODO ═══ -->
+<section class="scene" id="metodo">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 03 · Método</span></div>
+    <h2><em>[nome do método]</em><br>quatro fases,<br>uma direção.</h2>
+  </div>
+  <p class="method-note">↳ Bloco-âncora do site. O nome próprio do método é a decisão pendente — equivalente ao "Workflow Human®" da referência.</p>
+  <div style="height: 80px;"></div>
+  <div class="method-phases reveal">
+    <div class="phase"><span class="phase-num">FASE 01</span><div class="phase-content"><h3>Diagnóstico</h3><p>Entender o que a marca é hoje, o que ela tenta ser e o que está no caminho. Conversas, dados, repertório.</p></div></div>
+    <div class="phase"><span class="phase-num">FASE 02</span><div class="phase-content"><h3>Decisão</h3><p>Posicionamento, território, promessa. A parte do trabalho que ninguém vê, e que sustenta tudo o que vem depois.</p></div></div>
+    <div class="phase"><span class="phase-num">FASE 03</span><div class="phase-content"><h3>Sistema</h3><p>Identidade, linguagem, design. A marca ganha forma, e principalmente ganha consistência.</p></div></div>
+    <div class="phase"><span class="phase-num">FASE 04</span><div class="phase-content"><h3>Aplicação</h3><p>Campanhas, conteúdo, espaço, lançamento. Onde o trabalho encontra o mundo.</p></div></div>
+  </div>
+</section>
+
+<!-- ═══ CINEMATIC B · antes dos founders ═══ -->
+<!-- TROCAR: bg-image do estúdio em uso ou cena ambiente -->
+<section class="cinematic">
+  <div class="cinematic-bg" style="background-image: url('https://picsum.photos/seed/cinematicB12/2000/1300');"></div>
+  <div class="cinematic-inner reveal">
+    <span class="scene-marker" style="justify-content: center; margin: 0 auto 0; display: inline-flex;">Cena intermediária · II</span>
+    <p class="cinematic-quote">
+      Por trás de cada marca,<br>
+      duas mãos que <em>decidem.</em>
+    </p>
+    <p class="cinematic-attrib">— The New · São Paulo</p>
+  </div>
+</section>
+
+<!-- ═══ SCENE 04 · FOUNDERS ═══ -->
+<section class="scene" id="founders">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 04 · Quem assina</span></div>
+    <h2>Dois sócios,<br>uma mesma <em>forma</em><br>de trabalhar.</h2>
+  </div>
+  <div class="founders">
+    <div class="founder reveal">
+      <!-- TROCAR: retrato Andy (4:5, cinematográfico, mesmo enquadramento que Fernando) -->
+      <div class="founder-img">
+        <img src="https://picsum.photos/seed/andyfinal02/900/1100" class="img-treated" alt="Anderson Borges">
+      </div>
+      <p class="founder-credits">Co-fundador · Direção criativa executiva</p>
+      <h3 class="founder-name">Anderson<br>Borges</h3>
+      <p class="founder-role">Andy · Branding, varejo, direção</p>
+      <p class="founder-bio">Diretor criativo executivo com mais de 15 anos em branding, advertising, retail experience, motion e direção de arte para marcas brasileiras e internacionais. Forte background em publicidade, PR e campanha integrada, unindo visão estratégica e execução criativa. Liderou projetos para food service, varejo premium, wellness e mercado financeiro. Premiado em Cannes Lions e Clio Awards.</p>
+    </div>
+    <div class="founder reveal reveal-delay-2">
+      <!-- TROCAR: retrato Fernando (4:5, mesmo enquadramento que Andy) -->
+      <div class="founder-img">
+        <img src="https://picsum.photos/seed/fernandofinal02/900/1100" class="img-treated" alt="Fernando Davis">
+      </div>
+      <p class="founder-credits">Co-fundador · Direção criativa</p>
+      <h3 class="founder-name">Fernando<br>Davis</h3>
+      <p class="founder-role">Davis · Motion, audiovisual, narrativa visual</p>
+      <p class="founder-bio">Diretor criativo com foco em motion design, audiovisual e experiências visuais. Atua na construção de narrativas, filmes conceituais, conteúdo digital e projetos híbridos entre design, vídeo e tecnologia. Em parceria com Andy, integra direção criativa, storytelling e execução visual para campanhas, experiências imersivas e branding contemporâneo com linguagem premium.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCENE 05 · CAPACIDADES ═══ -->
+<section class="stack-block" id="stack">
+  <div class="scene-head reveal" style="margin-bottom: 80px; padding: 0 40px;">
+    <div><span class="scene-marker">Scene 05 · Capacidades</span></div>
+    <h2>O que entregamos<br>quando uma marca<br><em>precisa decidir.</em></h2>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>Branding</span><span>Naming e posicionamento</span><span>Direção criativa</span><span>Campanha integrada</span><span>Campanha de varejo</span><span>Comunicação para PDV</span><span>Embalagem</span><span>Retail design</span><span>Cenografia</span><span>Experiência imersiva</span><span>Motion e audiovisual</span><span>Social content</span><span>Apresentação estratégica</span>
+      <span>Branding</span><span>Naming e posicionamento</span><span>Direção criativa</span><span>Campanha integrada</span><span>Campanha de varejo</span><span>Comunicação para PDV</span><span>Embalagem</span><span>Retail design</span><span>Cenografia</span><span>Experiência imersiva</span><span>Motion e audiovisual</span><span>Social content</span><span>Apresentação estratégica</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCENE 06 · TRABALHO ═══ -->
+<section class="scene" id="trabalho">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 06 · Trabalho selecionado</span></div>
+    <h2>Casos <em>recentes.</em></h2>
+  </div>
+  <div class="cases-grid">
+    <a href="#" class="case-card reveal"><div class="case-card-img"><img src="https://picsum.photos/seed/starbuckscase/900/1100" class="img-treated" alt=""></div><div class="case-card-content"><div><span class="case-card-tag">Retail & campanha · 2026</span><h3 class="case-card-title">Starbucks</h3></div><span class="case-card-arrow">↗</span></div></a>
+    <a href="#" class="case-card reveal reveal-delay-1"><div class="case-card-img"><img src="https://picsum.photos/seed/oggifinal/1100/900" class="img-treated" alt=""></div><div class="case-card-content"><div><span class="case-card-tag">Naming & branding · 2026</span><h3 class="case-card-title">OGGI<br>Sorvetes</h3></div><span class="case-card-arrow">↗</span></div></a>
+    <a href="#" class="case-card reveal"><div class="case-card-img"><img src="https://picsum.photos/seed/drogariafinal/1100/900" class="img-treated" alt=""></div><div class="case-card-content"><div><span class="case-card-tag">Plataforma de marca · 2026</span><h3 class="case-card-title">Drogaria<br>Iguatemi</h3></div><span class="case-card-arrow">↗</span></div></a>
+    <a href="#" class="case-card reveal reveal-delay-1"><div class="case-card-img"><img src="https://picsum.photos/seed/tgifridayscase/900/1100" class="img-treated" alt=""></div><div class="case-card-content"><div><span class="case-card-tag">Branding & PDV · 2025</span><h3 class="case-card-title">TGI<br>Fridays</h3></div><span class="case-card-arrow">↗</span></div></a>
+  </div>
+</section>
+
+<!-- ═══ CINEMATIC C · transição antes de quem confia ═══ -->
+<!-- TROCAR: bg-image evocativa de processo/escala/criação -->
+<section class="cinematic">
+  <div class="cinematic-bg" style="background-image: url('https://picsum.photos/seed/cinematicC18/2000/1300');"></div>
+  <div class="cinematic-inner reveal">
+    <span class="scene-marker" style="justify-content: center; margin: 0 auto 0; display: inline-flex;">Cena intermediária · III</span>
+    <p class="cinematic-quote">
+      <span class="light">Estratégia é o que</span><br>
+      ninguém vê.<br>
+      <em>Mas tudo</em> depende dela.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ SCENE 07 · QUEM CONFIA ═══ -->
+<section class="scene">
+  <div class="scene-head reveal">
+    <div><span class="scene-marker">Scene 07 · Quem confia</span></div>
+    <h2>Marcas que já<br>trabalharam <em>com a gente.</em></h2>
+  </div>
+  <div class="clients reveal">
+    <span>Starbucks</span>
+    <span>TGI Fridays</span>
+    <span>Pringles</span>
+    <span>Honda</span>
+    <span>Marilan</span>
+    <span>Zona Sul</span>
+    <span>Drogaria Iguatemi</span>
+    <span>AEGEA</span>
+    <span>OGGI Sorvetes</span>
+    <span>Mania de Churrasco</span>
+    <span>Sterna Café</span>
+    <span>Gendai</span>
+  </div>
+  <div class="testimonials reveal">
+    <div class="testimonial">
+      <p class="testimonial-quote">Um time que pensa marca antes de pensar entrega. Por isso o que sai do estúdio funciona, e parece com a gente.</p>
+      <p class="testimonial-author">— [Cliente / cargo / marca]</p>
+    </div>
+    <div class="testimonial">
+      <p class="testimonial-quote">Tem direção criativa, tem estratégia e tem capacidade de produção em IA num nível que poucos estúdios entregam no Brasil.</p>
+      <p class="testimonial-author">— [Cliente / cargo / marca]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ END · CTA FINAL ═══ -->
+<section id="contato" class="cta-final">
+  <!-- TROCAR: imagem atmosférica de fundo -->
+  <div class="cta-final-bg">
+    <img src="https://picsum.photos/seed/ctafinal01/1920/1080" alt="">
+  </div>
+  <span class="scene-marker">End · Próxima cena</span>
+  <h2 style="margin-top: 24px;">Vamos começar pelo <em>começo:</em><br>nos conta o projeto.</h2>
+  <a href="mailto:ola@thenew.studio" class="cta-large">Enviar briefing <span class="arr">→</span></a>
+</section>
+
+<footer>
+  <div class="footer-brand">The<br>New<span class="dot">.</span></div>
+  <div>
+    <h4>Contato</h4>
+    <a href="mailto:ola@thenew.studio">ola@thenew.studio</a>
+    <a href="#">+55 11 0000 0000</a>
+  </div>
+  <div>
+    <h4>Estúdio</h4>
+    <p>São Paulo</p>
+    <p>Brasil</p>
+  </div>
+  <div>
+    <h4>Redes</h4>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">Behance</a>
+  </div>
+  <div class="copyright">
+    <span>© The New · MMXXVI</span>
+    <span>Estúdio criativo · São Paulo</span>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
