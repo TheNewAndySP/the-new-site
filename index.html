@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0C0B09">
 <meta name="supported-color-schemes" content="dark">
-<title>The New — Estúdio criativo</title>
+<title>The New Creative Hub — Estúdio criativo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Albert+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -300,88 +300,6 @@ nav .menu a:hover { opacity: 1; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(236, 231, 218, 0.7);
-}
-
-/* ─────────── REEL ─────────── */
-.reel-block {
-  padding: 140px 0 160px;
-  overflow: hidden;
-}
-.reel-head {
-  padding: 0 40px 56px;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 40px;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-.reel-head h3 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3vw, 44px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-weight: 400;
-}
-.reel-head h3 em { font-style: italic; color: var(--accent); }
-.reel {
-  display: flex;
-  gap: 28px;
-  padding: 0 40px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.reel::-webkit-scrollbar { display: none; }
-.reel-item {
-  flex: 0 0 auto;
-  width: 380px;
-  height: 480px;
-  scroll-snap-align: start;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: var(--bg-soft);
-  border-radius: 4px;
-}
-.reel-item:nth-child(odd) { height: 540px; align-self: start; }
-.reel-item:nth-child(even) { height: 440px; align-self: end; }
-.reel-item:hover .img-treated {
-  filter: grayscale(0) sepia(0) brightness(1) contrast(1.05) saturate(1);
-  transform: scale(1.04);
-}
-.reel-caption {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  right: 24px;
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 16px;
-}
-.reel-caption-title {
-  font-family: var(--serif);
-  font-size: 28px;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--fg);
-}
-.reel-caption-tag {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: rgba(236, 231, 218, 0.78);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.reel-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 45%, rgba(12,11,9,0.92) 100%);
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* ─────────── MANIFESTO ─────────── */
@@ -785,8 +703,8 @@ footer {
 }
 .footer-brand {
   font-family: var(--serif);
-  font-size: clamp(80px, 9vw, 168px);
-  line-height: 0.85;
+  font-size: clamp(56px, 6vw, 112px);
+  line-height: 0.9;
   letter-spacing: -0.035em;
 }
 .footer-brand .dot { color: var(--accent); }
@@ -856,8 +774,6 @@ footer a:hover { opacity: 1; color: var(--accent); }
   nav .menu { display: none; }
   nav { padding: 20px 24px; }
   .scroll-hint { display: none; }
-  .reel-item { width: 280px; height: 360px; }
-  .reel-item:nth-child(odd), .reel-item:nth-child(even) { height: 360px; align-self: auto; }
   .case-card-content { padding: 28px; }
 }
 @media (max-width: 540px) {
@@ -868,7 +784,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
 <body>
 
 <nav>
-  <a href="#" class="logo">The New<span class="dot">.</span></a>
+  <a href="#" class="logo">The New Creative Hub<span class="dot">.</span></a>
   <div class="menu">
     <a href="#trabalho">Trabalho</a>
     <a href="#metodo">Método</a>
@@ -904,23 +820,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
   </div>
 </section>
 
-<!-- ═══ REEL ═══ -->
-<section class="reel-block">
-  <div class="reel-head">
-    <h3>Em produção <em>/ agora</em></h3>
-    <p class="label">Arraste →</p>
-  </div>
-  <div class="reel">
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal01/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Starbucks</span><span class="reel-caption-tag">Retail · Campanha</span></div></div>
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal02/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">TGI Fridays</span><span class="reel-caption-tag">Branding · PDV</span></div></div>
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal03/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Honda</span><span class="reel-caption-tag">Campanha</span></div></div>
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal04/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">OGGI</span><span class="reel-caption-tag">Naming · embalagem</span></div></div>
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal05/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Drogaria Iguatemi</span><span class="reel-caption-tag">Plataforma</span></div></div>
-    <div class="reel-item"><img src="https://picsum.photos/seed/reelfinal06/600/800" class="img-treated" alt=""><div class="reel-caption"><span class="reel-caption-title">Pringles</span><span class="reel-caption-tag">Direção criativa</span></div></div>
-  </div>
-</section>
-
-<!-- ═══ CINEMATIC A · transição depois do reel ═══ -->
+<!-- ═══ CINEMATIC A · transição depois do hero ═══ -->
 <!-- TROCAR: bg-image cinematográfica horizontal, mood evocativo -->
 <section class="cinematic">
   <div class="cinematic-bg" style="background-image: url('https://picsum.photos/seed/cinematicA08/2000/1300');"></div>
@@ -941,7 +841,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
   </div>
   <div class="manifesto-grid">
     <p class="reveal">
-      Marca não é mais identidade visual. <em>É posição</em>, é narrativa, e principalmente é o que acontece quando ela vira <em>lugar, embalagem, vídeo, experiência.</em> The New existe para marcas que precisam de quem pense antes de executar, e que execute <em>de verdade.</em>
+      Marca não é mais identidade visual. <em>É posição</em>, é narrativa, e principalmente é o que acontece quando ela vira <em>lugar, embalagem, vídeo, experiência.</em> The New Creative Hub existe para marcas que precisam de quem pense antes de executar, e que execute <em>de verdade.</em>
     </p>
     <!-- TROCAR: imagem vertical conceitual -->
     <div class="manifesto-img reveal reveal-delay-1">
@@ -992,7 +892,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
       Por trás de cada marca,<br>
       duas mãos que <em>decidem.</em>
     </p>
-    <p class="cinematic-attrib">— The New · São Paulo</p>
+    <p class="cinematic-attrib">— The New Creative Hub · São Paulo</p>
   </div>
 </section>
 
@@ -1112,7 +1012,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
 </section>
 
 <footer>
-  <div class="footer-brand">The<br>New<span class="dot">.</span></div>
+  <div class="footer-brand">The New<br>Creative Hub<span class="dot">.</span></div>
   <div>
     <h4>Contato</h4>
     <a href="mailto:ola@thenew.studio">ola@thenew.studio</a>
@@ -1130,7 +1030,7 @@ footer a:hover { opacity: 1; color: var(--accent); }
     <a href="#">Behance</a>
   </div>
   <div class="copyright">
-    <span>© The New · MMXXVI</span>
+    <span>© The New Creative Hub · MMXXVI</span>
     <span>Estúdio criativo · São Paulo</span>
   </div>
 </footer>
