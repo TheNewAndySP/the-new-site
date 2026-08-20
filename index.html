@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TheNew.ag — Estúdio criativo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #FAFAF9; color: #14140F; font-family: 'Albert Sans', -apple-system, sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: #DC5A2E; color: #FAFAF9; }
+  @keyframes tn-blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  @keyframes tn-marquee-l { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes tn-marquee-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+</style>
+
+<style>
+.tn-hv-1:hover{opacity: 1;}
+.tn-hv-2:hover{opacity: 1;}
+.tn-hv-3:hover{opacity: 1;}
+.tn-hv-4:hover{opacity: 1;}
+.tn-hv-5:hover{opacity: 1;}
+.tn-hv-6:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-7:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-8:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-9:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-10:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-11:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-12:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-13:hover{filter: grayscale(0) contrast(1.05); transform: scale(1.03);}
+.tn-hv-14:hover{background: #F0F0EE;}
+.tn-hv-15:hover{background: #F0F0EE;}
+.tn-hv-16:hover{background: #F0F0EE;}
+.tn-hv-17:hover{background: #F0F0EE;}
+.tn-hv-18:hover{background: #F0F0EE;}
+.tn-hv-19:hover{background: #F0F0EE;}
+.tn-hv-20:hover{background: #F0F0EE;}
+.tn-hv-21:hover{background: #F0F0EE;}
+.tn-hv-22:hover{background: #F0F0EE;}
+.tn-hv-23:hover{background: #F0F0EE;}
+.tn-hv-24:hover{background: #F0F0EE;}
+.tn-hv-25:hover{color: #DC5A2E;}
+.tn-hv-26:hover{color: #DC5A2E;}
+@media (max-width: 879px) { .tn-desktop-only { display: none !important; } }
+@media (min-width: 880px) { .tn-mobile-only { display: none !important; } }
+</style>
+</head>
+<body>
+
+
+<div id="tn-cursor" style="position: fixed; top: 0; left: 0; width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(20,20,15,0.4); pointer-events: none; z-index: 999; transform: translate(-999px,-999px); transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s; mix-blend-mode: difference;"></div>
+
+<div style="position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 300; background: rgba(20,20,15,0.06);">
+  <div id="tn-progress" style="height: 100%; width: 0%; background: #DC5A2E;"></div>
+</div>
+
+<nav id="tn-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; transition: background 0.5s ease, padding 0.5s ease, box-shadow 0.5s ease; gap: 24px;">
+  <a href="#topo" style="font-family: 'Albert Sans', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; position: relative; z-index: 2;" id="tn-logo">TheNew<span style="color: #DC5A2E;">.ag</span></a>
+  <button class="tn-mobile-only" aria-label="Menu" id="tn-burger" style="width: 40px; height: 40px; border-radius: 100px; border: 1px solid rgba(20,20,15,0.2); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; position: relative; z-index: 2; cursor: pointer;">
+      <span style="width: 16px; height: 1px; background: #14140F; display: block;"></span>
+      <span style="width: 16px; height: 1px; background: #14140F; display: block;"></span>
+    </button>
+  <div id="tn-menu" class="tn-desktop-only" style="display: flex; gap: 32px; position: relative; z-index: 2;">
+      <a href="#trabalho" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; transition: opacity 0.3s;" class="tn-hv-1"><span data-i18n="nav_trabalho">Trabalho</span></a>
+      <a href="#servicos" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; transition: opacity 0.3s;" class="tn-hv-2"><span data-i18n="nav_servicos">Serviços</span></a>
+      <a href="#metodo" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; transition: opacity 0.3s;" class="tn-hv-3"><span data-i18n="nav_metodo">Método</span></a>
+      <a href="#estudio" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; transition: opacity 0.3s;" class="tn-hv-4"><span data-i18n="nav_estudio">Sócios</span></a>
+      <a href="#contato" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; transition: opacity 0.3s;" class="tn-hv-5"><span data-i18n="nav_contato">Contato</span></a>
+      <button id="tn-lang-toggle" aria-label="Switch language" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; background: none; border: 1px solid currentColor; border-radius: 3px; padding: 2px 9px; cursor: pointer; color: inherit;">EN</button>
+    </div>
+</nav>
+
+<div id="tn-mobile-menu" style="position: fixed; inset: 0; z-index: 190; background: #FAFAF9; display: flex; flex-direction: column; justify-content: center; padding: 40px; gap: 28px; transform: translateY(-100%); transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); opacity: 0;">
+  <a href="#trabalho" data-mm="1" style="font-family: 'Albert Sans', sans-serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em;"><span data-i18n="nav_trabalho">Trabalho</span></a>
+  <a href="#servicos" data-mm="1" style="font-family: 'Albert Sans', sans-serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em;"><span data-i18n="nav_servicos">Serviços</span></a>
+  <a href="#metodo" data-mm="1" style="font-family: 'Albert Sans', sans-serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em;"><span data-i18n="nav_metodo">Método</span></a>
+  <a href="#estudio" data-mm="1" style="font-family: 'Albert Sans', sans-serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em;"><span data-i18n="nav_estudio">Sócios</span></a>
+  <a href="#contato" data-mm="1" style="font-family: 'Albert Sans', sans-serif; font-size: 34px; font-weight: 500; letter-spacing: -0.02em; color: #DC5A2E;"><span data-i18n="nav_contato">Contato</span></a>
+  <button id="tn-lang-toggle-mobile" data-mm="1" aria-label="Switch language" style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; background: none; border: 1px solid currentColor; border-radius: 3px; padding: 6px 14px; cursor: pointer; color: inherit; margin-top: 8px;">EN</button>
+</div>
+
+<div id="tn-rail" style="position: fixed; right: 28px; top: 50%; transform: translateY(-50%); z-index: 180; display: flex; flex-direction: column; align-items: flex-end; gap: 14px;">
+  <span id="tn-rail-label" style="position: absolute; right: 30px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #DC5A2E; opacity: 0; transition: opacity 0.4s;">Hero</span>
+  <a href="#topo" data-tn-dot="topo" data-tn-label="Topo" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+  <a href="#trabalho" data-tn-dot="trabalho" data-tn-label="Trabalho" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+  <a href="#servicos" data-tn-dot="servicos" data-tn-label="Serviços" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+  <a href="#metodo" data-tn-dot="metodo" data-tn-label="Método" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+  <a href="#estudio" data-tn-dot="estudio" data-tn-label="Sócios" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+  <a href="#contato" data-tn-dot="contato" data-tn-label="Contato" style="width: 7px; height: 7px; border-radius: 50%; background: rgba(20,20,15,0.25); transition: background 0.4s, transform 0.4s;"></a>
+</div>
+
+<section id="topo" data-screen-label="00 Hero" style="position: relative; height: 100vh; min-height: 640px; overflow: hidden; background: #14140F;">
+  <div data-tn-slide="0" style="position: absolute; inset: -6%; opacity: 1; transition: opacity 1.2s ease-in-out; will-change: transform;">
+    <div data-px="10" style="position: absolute; inset: 0; will-change: transform;">
+      <video autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" poster="assets/case-honda-poster.jpg" style="width: 100%; height: 100%; object-fit: cover;"><source src="assets/case-honda.mp4" type="video/mp4" /></video>
+    </div>
+  </div>
+  <div data-tn-slide="1" style="position: absolute; inset: -6%; opacity: 0; transition: opacity 1.2s ease-in-out; will-change: transform;">
+    <div data-px="10" style="position: absolute; inset: 0; will-change: transform;">
+      <video muted="muted" loop="loop" playsinline="playsinline" poster="assets/case-aegea-poster.jpg" style="width: 100%; height: 100%; object-fit: cover;"><source src="assets/case-aegea.mp4" type="video/mp4" /></video>
+    </div>
+  </div>
+  <div data-tn-slide="2" style="position: absolute; inset: -6%; opacity: 0; transition: opacity 1.2s ease-in-out; will-change: transform;">
+    <div data-px="10" style="position: absolute; inset: 0; will-change: transform;">
+      <video muted="muted" loop="loop" playsinline="playsinline" poster="assets/case-caoachangan-poster.jpg" style="width: 100%; height: 100%; object-fit: cover;"><source src="assets/case-caoachangan.mp4" type="video/mp4" /></video>
+    </div>
+  </div>
+  <div data-tn-slide="3" style="position: absolute; inset: -6%; opacity: 0; transition: opacity 1.2s ease-in-out; will-change: transform;">
+    <div data-px="10" style="position: absolute; inset: 0; will-change: transform;">
+      <video muted="muted" loop="loop" playsinline="playsinline" poster="assets/case-lesoleil-poster.jpg" style="width: 100%; height: 100%; object-fit: cover;"><source src="assets/case-lesoleil.mp4" type="video/mp4" /></video>
+    </div>
+  </div>
+  <div style="position: absolute; inset: 0; z-index: 3; background: linear-gradient(180deg, rgba(20,20,15,0.42) 0%, transparent 26%, transparent 52%, rgba(20,20,15,0.82) 100%); pointer-events: none;"></div>
+
+  <div style="position: absolute; bottom: 44px; left: 40px; right: 40px; z-index: 4; display: flex; justify-content: space-between; align-items: end; gap: 32px; color: #FAFAF9;">
+    <div>
+      <span id="tn-hero-label" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; margin-bottom: 14px;">Honda · Campanha · 2025</span>
+      <h1 id="tn-hero-title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(64px, 10vw, 168px); font-weight: 700; letter-spacing: -0.035em; line-height: 0.92; margin: 0;">Honda</h1>
+    </div>
+    <div style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 20px;">
+      <p id="tn-hero-info" style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; line-height: 1.7;">TheNew<span style="color: #DC5A2E;">.ag</span><br />Estúdio criativo<br />São Paulo</p>
+      <div id="tn-hero-progress" style="display: flex; gap: 8px;"></div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 100px; right: 40px; z-index: 4; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,250,249,0.6);">Scroll <span style="display: inline-block; animation: tn-blink 2.2s infinite;">↓</span></div>
+</section>
+
+<section data-rv="1" style="padding: 140px 40px; max-width: 1200px; margin: 0 auto;">
+  <span style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin-bottom: 40px;">TheNew<span style="color: #DC5A2E;">.ag</span> · São Paulo</span>
+  <p id="tn-intro-text" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(30px, 4.4vw, 64px); line-height: 1.14; font-weight: 400; letter-spacing: -0.025em; max-width: 1200px; margin: 0; text-wrap: pretty;">Somos um estúdio criativo dedicado a <strong style="font-weight: 700; color: #DC5A2E;">branding, direção criativa, varejo, motion e experiência de marca.</strong> Trabalhamos com marcas que precisam de quem pense antes de executar, e que execute de verdade.</p>
+</section>
+
+<div id="trabalho" data-screen-label="01 Trabalho" style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="5" src="assets/case-noar.jpg" alt="NOAR · Cheiro Digital" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-6" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 data-i18n="case_title_1" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Experiências Sensoriais</h2>
+      <span data-i18n="case_cat_1" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">NOAR · Cheiro digital &amp; imersão 4D · 2025</span>
+    </div>
+    <p data-i18n="case_body_1" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 460px;">Projetos completos de criação, cenografia, ativação e produção de experiências sensoriais — do cheiro digital à imersão 4D, unindo tecnologia, emoção e narrativa.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="4" src="assets/case-sol.jpg" alt="SOL · Luiza Gottschalk" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-7" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 data-i18n="case_title_2" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Experiências Visuais</h2>
+      <span data-i18n="case_cat_2" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">SOL · Luiza Gottschalk · 2025</span>
+    </div>
+    <p data-i18n="case_body_2" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 620px;">Cenografia, direção criativa e produção para artistas, marcas e exposições — projetos com forte presença estética e unidade visual.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="5" src="assets/case-lesoleil.jpg" alt="Le Soleil d'Été · Cashmere" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-8" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 data-i18n="case_title_3" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Motion AI Graphics</h2>
+      <span data-i18n="case_cat_3" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Le Soleil d'Été · Campanha Cashmere · 2026</span>
+    </div>
+    <p data-i18n="case_body_3" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px;">Narrativas visuais criadas entre direção criativa e inteligência artificial — filmes, motion graphics e conteúdos originais de alto impacto.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="6" src="assets/case-aegea.jpg" alt="Aegea · Evento" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-9" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 data-i18n="case_title_4" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Vídeo Cenografias</h2>
+      <span data-i18n="case_cat_4" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Evento AEGEA · 2025</span>
+    </div>
+    <p data-i18n="case_body_4" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 620px;">Conteúdo visual pensado para ocupar o espaço: vídeos cenográficos e experiências imersivas que conectam narrativa, movimento, luz e arquitetura.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="4" src="assets/case-drogaria.jpg" alt="Drogaria Iguatemi" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-10" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Drogaria Iguatemi</h2>
+      <span data-i18n="case_cat_5" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Varejo, vitrine &amp; ativação · 2026</span>
+    </div>
+    <p data-i18n="case_body_5" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 620px;">Campanhas criativas, vitrines impactantes e ativações que valorizam a marca e elevam a experiência em loja, com linguagem alinhada ao posicionamento premium da Drogaria Iguatemi.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="5" src="assets/case-starbucks.jpg" alt="Starbucks" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-11" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Starbucks</h2>
+      <span data-i18n="case_cat_6" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Branding, embalagem &amp; visual merchandising · 2026</span>
+    </div>
+    <p data-i18n="case_body_6" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 460px;">Projetos especiais de branding, embalagens e visual merchandising, com um processo automatizado que entrega milhares de peças por campanha para todas as lojas — consistência visual e agilidade operacional.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="4" src="assets/case-social.jpg" alt="Social & Motion Graphics" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-12" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Social &amp; Motion Graphics</h2>
+      <span data-i18n="case_cat_7" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Conteúdo, edição &amp; pós-produção · 2025</span>
+    </div>
+    <p data-i18n="case_body_7" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 620px;">Do conceito à pós-produção: cuidamos de todas as etapas da criação, desenvolvimento e edição de vídeos e animações, garantindo qualidade, originalidade e impacto em cada entrega.</p>
+  </article>
+  <article data-rv="1" style="padding: 56px 0 96px; position: relative;">
+    <div style="width: 100%; margin: 0; aspect-ratio: 2050/678; background: #F0F0EE; overflow: hidden; position: relative;">
+      <img data-px="5" src="assets/case-stands.jpg" alt="Stands & Ativações" style="width: 100%; height: 116%; object-fit: cover; filter: grayscale(1) contrast(1.05); transition: transform 1.3s cubic-bezier(0.16,1,0.3,1), filter 1s cubic-bezier(0.16,1,0.3,1);" class="tn-hv-13" />
+    </div>
+    <div style="width: 100%; margin: 24px 0 0; display: flex; justify-content: space-between; align-items: baseline; gap: 32px; flex-wrap: wrap;">
+      <h2 data-i18n="case_title_8" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.02; margin: 0;">Stands</h2>
+      <span data-i18n="case_cat_8" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Design de stand &amp; experiência de marca · 2025</span>
+    </div>
+    <p data-i18n="case_body_8" style="width: 100%; margin: 16px 0 0; font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px;">Design de stand e produção de experiências de marca que transformam espaços físicos em pontos de contato memoráveis.</p>
+  </article>
+</div>
+
+<section id="servicos" data-screen-label="02 Serviços" style="padding: 140px 40px; border-top: 1px solid rgba(20,20,15,0.1);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div data-rv="1" style="margin-bottom: 80px; max-width: 800px; position: relative;">
+      <span style="position: absolute; top: -40px; right: -20px; font-family: 'Albert Sans', sans-serif; font-size: clamp(100px, 16vw, 260px); font-weight: 700; color: rgba(20,20,15,0.045); line-height: 1; z-index: 0; pointer-events: none;">02</span>
+      <span data-i18n="nav_servicos" style="position: relative; z-index: 1; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin-bottom: 28px;">Serviços</span>
+      <h2 data-i18n="servicos_heading" style="position: relative; z-index: 1; font-family: 'Albert Sans', sans-serif; font-size: clamp(36px, 4.8vw, 68px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; margin: 0;">Sete frentes, um mesmo modo de pensar.</h2>
+    </div>
+    <div data-rv="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1px; background: rgba(20,20,15,0.1); border: 1px solid rgba(20,20,15,0.1);">
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-14">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">01</span>
+        <div><h3 data-i18n="svc1_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Estratégia &amp; naming</h3><p data-i18n="svc1_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Posicionamento, plataforma de marca, naming e arquitetura. O trabalho que define no que a marca acredita e o que ela vai deixar de ser.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-15">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">02</span>
+        <div><h3 data-i18n="svc2_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Identidade &amp; sistema</h3><p data-i18n="svc2_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Sistema visual, design e linguagem. Identidade como decisão de marca, não como entrega de logotipo.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-16">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">03</span>
+        <div><h3 data-i18n="svc3_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Direção criativa &amp; campanha</h3><p data-i18n="svc3_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Conceito, campanha integrada e narrativa. A camada onde a estratégia vira algo que as pessoas sentem.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-17">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">04</span>
+        <div><h3 data-i18n="svc7_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Social &amp; conteúdo</h3><p data-i18n="svc7_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Gestão de redes sociais, criação de conteúdo e calendário editorial. A marca presente todos os dias, com consistência e direção.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-18">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">05</span>
+        <div><h3 data-i18n="svc4_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Varejo &amp; PDV</h3><p data-i18n="svc4_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Identidade aplicada ao ponto de venda, comunicação de loja, campanha de varejo e embalagem. Marca que precisa funcionar onde a decisão acontece.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-19">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">06</span>
+        <div><h3 data-i18n="svc5_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Motion &amp; audiovisual</h3><p data-i18n="svc5_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Filmes de marca, social content, motion design e narrativas visuais. Linguagem premium aplicada ao formato que mais cresce.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 48px 40px; display: grid; grid-template-columns: 40px 1fr; gap: 24px; transition: background 0.4s;" class="tn-hv-20">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em; padding-top: 8px;">07</span>
+        <div><h3 data-i18n="svc6_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Experiência &amp; cenografia</h3><p data-i18n="svc6_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 420px; margin: 0;">Eventos, ativações imersivas, retail design e experiências imersivas. Quando a marca precisa virar lugar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodo" data-screen-label="03 Método" style="padding: 140px 40px; border-top: 1px solid rgba(20,20,15,0.1);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div data-rv="1" style="margin-bottom: 80px; max-width: 800px; position: relative;">
+      <span style="position: absolute; top: -40px; right: -20px; font-family: 'Albert Sans', sans-serif; font-size: clamp(100px, 16vw, 260px); font-weight: 700; color: rgba(20,20,15,0.045); line-height: 1; z-index: 0; pointer-events: none;">03</span>
+      <span data-i18n="nav_metodo" style="position: relative; z-index: 1; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin-bottom: 28px;">Método</span>
+      <h2 style="position: relative; z-index: 1; font-family: 'Albert Sans', sans-serif; font-size: clamp(36px, 4.8vw, 68px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; margin: 0;"><span style="color: #DC5A2E;">The New Way</span><span data-i18n="metodo_heading_rest">, quatro fases, uma direção.</span></h2>
+      <p data-i18n="metodo_intro" style="margin-top: 24px; font-size: 17px; line-height: 1.6; color: #56564E; max-width: 620px;">Um jeito próprio de trabalhar, do diagnóstico à aplicação. Cada projeto passa pelas mesmas quatro fases, na mesma ordem, com a mesma direção sênior do começo ao fim.</p>
+    </div>
+    <div data-rv="1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: rgba(20,20,15,0.1); border: 1px solid rgba(20,20,15,0.1);">
+      <div style="background: #FAFAF9; padding: 40px 32px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; transition: background 0.4s;" class="tn-hv-21">
+        <span data-i18n="fase1_label" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em;">FASE 01</span>
+        <div><h3 data-i18n="fase1_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Diagnóstico</h3><p data-i18n="fase1_desc" style="font-size: 14px; line-height: 1.6; color: #56564E; margin: 0;">Entender o que a marca é hoje, o que ela tenta ser e o que está no caminho. Conversas, dados, repertório.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 40px 32px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; transition: background 0.4s;" class="tn-hv-22">
+        <span data-i18n="fase2_label" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em;">FASE 02</span>
+        <div><h3 data-i18n="fase2_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Decisão</h3><p data-i18n="fase2_desc" style="font-size: 14px; line-height: 1.6; color: #56564E; margin: 0;">Posicionamento, território, promessa. A parte do trabalho que ninguém vê, e que sustenta tudo o que vem depois.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 40px 32px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; transition: background 0.4s;" class="tn-hv-23">
+        <span data-i18n="fase3_label" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em;">FASE 03</span>
+        <div><h3 data-i18n="fase3_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Sistema</h3><p data-i18n="fase3_desc" style="font-size: 14px; line-height: 1.6; color: #56564E; margin: 0;">Identidade, linguagem, design. A marca ganha forma, e principalmente ganha consistência.</p></div>
+      </div>
+      <div style="background: #FAFAF9; padding: 40px 32px; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; transition: background 0.4s;" class="tn-hv-24">
+        <span data-i18n="fase4_label" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; color: #DC5A2E; letter-spacing: 0.1em;">FASE 04</span>
+        <div><h3 data-i18n="fase4_title" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -0.015em; margin: 0 0 14px;">Aplicação</h3><p data-i18n="fase4_desc" style="font-size: 14px; line-height: 1.6; color: #56564E; margin: 0;">Campanhas, conteúdo, espaço, lançamento. Onde o trabalho encontra o mundo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estudio" data-screen-label="04 Sócios" style="padding: 140px 40px; border-top: 1px solid rgba(20,20,15,0.1);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div data-rv="1" style="margin-bottom: 80px; max-width: 720px; position: relative;">
+      <span style="position: absolute; top: -40px; right: -20px; font-family: 'Albert Sans', sans-serif; font-size: clamp(100px, 16vw, 260px); font-weight: 700; color: rgba(20,20,15,0.045); line-height: 1; z-index: 0; pointer-events: none;">04</span>
+      <span data-i18n="nav_estudio" style="position: relative; z-index: 1; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin-bottom: 28px;">Sócios</span>
+      <h2 data-i18n="estudio_heading" style="position: relative; z-index: 1; font-family: 'Albert Sans', sans-serif; font-size: clamp(36px, 4.8vw, 68px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.05; margin: 0;">Dois sócios, uma mesma forma de trabalhar.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 64px;">
+      <div data-rv="1">
+        <div style="aspect-ratio: 4/5; overflow: hidden; background: #F0F0EE; margin-bottom: 24px;"><img src="assets/andy.jpg" alt="Anderson Borges" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2vw, 28px); font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px;">Anderson Borges</h3>
+        <p data-i18n="bio1_role" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin: 0 0 20px;">Co-fundador · Direção criativa executiva</p>
+        <p data-i18n="bio1_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 460px; margin: 0;">Diretor criativo com mais de 15 anos em branding, advertising, retail experience, motion e direção de arte para marcas brasileiras e internacionais. Liderou projetos para food service, varejo premium, wellness e mercado financeiro. Premiado em Cannes Lions e Clio Awards.</p>
+      </div>
+      <div data-rv="1">
+        <div style="aspect-ratio: 4/5; overflow: hidden; background: #F0F0EE; margin-bottom: 24px;"><img src="assets/fernando.jpg" alt="Fernando Davis" style="width: 100%; height: 100%; object-fit: cover;" /></div>
+        <h3 style="font-family: 'Albert Sans', sans-serif; font-size: clamp(22px, 2vw, 28px); font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px;">Fernando Davis</h3>
+        <p data-i18n="bio2_role" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin: 0 0 20px;">Co-fundador · Direção criativa</p>
+        <p data-i18n="bio2_desc" style="font-size: 15px; line-height: 1.6; color: #56564E; max-width: 460px; margin: 0;">Artista visual e diretor criativo com foco em motion design, audiovisual e experiências visuais. Atua na construção de narrativas, filmes conceituais, desenho e animação, com passagens por residências artísticas em Barcelona, Leipzig e no Pivô Art, em São Paulo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div data-rv="1" style="padding: 90px 40px; border-top: 1px solid rgba(20,20,15,0.1); max-width: 1200px; margin: 0 auto;">
+  <span data-i18n="capacidades_label" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin-bottom: 28px;">Capacidades</span>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px 24px;">
+    <span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Branding</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Naming</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_dc" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Direção criativa</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_ci" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Campanha integrada</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_varejo" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Varejo &amp; PDV</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_emb" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Embalagem</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_motion" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Motion &amp; audiovisual</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_ceno" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Cenografia</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_exp" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Experiência imersiva</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_social" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Gestão de redes sociais</span><span style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">·</span><span data-i18n="cap_conteudo" style="font-family: 'Albert Sans', sans-serif; font-size: 17px; color: #56564E;">Criação de conteúdo</span>
+  </div>
+  <span data-i18n="clientes_label" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; margin: 56px 0 28px;">Clientes</span>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px 24px;">
+    <span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Starbucks</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">TGI Fridays</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Pringles</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Honda</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Marilan</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Mata SP</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Drogaria Iguatemi</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">AEGEA</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">OGGI Sorvetes</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Mania de Churrasco</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Sterna Café</span><span style="color: #A3A39B; font-size: clamp(19px, 1.8vw, 24px);">·</span><span style="font-family: 'Albert Sans', sans-serif; font-size: clamp(19px, 1.8vw, 24px); color: #14140F;">Gendai</span>
+  </div>
+</div>
+
+<section id="contato" data-screen-label="05 Contato" style="padding: 160px 40px 120px; border-top: 1px solid rgba(20,20,15,0.1);">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div data-rv="1" style="position: relative;">
+      <span style="position: absolute; top: -50px; left: -6px; font-family: 'Albert Sans', sans-serif; font-size: clamp(100px, 16vw, 260px); font-weight: 700; color: rgba(20,20,15,0.045); line-height: 1; z-index: 0; pointer-events: none;">05</span>
+      <h2 style="position: relative; z-index: 1; font-family: 'Albert Sans', sans-serif; font-size: clamp(40px, 6vw, 96px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; margin: 0 0 80px; max-width: 1100px; text-wrap: pretty;"><span data-i18n="contato_heading_main">Tem um projeto, uma marca, uma decisão para tomar? </span><span data-i18n="contato_heading_cta" style="color: #DC5A2E;">Conta pra gente.</span></h2>
+    </div>
+    <div data-rv="1" style="display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: start; padding-top: 48px; border-top: 1px solid rgba(20,20,15,0.1);">
+      <span data-i18n="nav_contato" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B;">Contato</span>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <a href="mailto:contato@thenew.ag" data-tn-magnet="1" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 12px; width: fit-content; transition: color 0.3s;" class="tn-hv-25">contato@thenew.ag <span style="font-size: 14px; opacity: 0.6; transition: transform 0.3s;">→</span></a>
+        <a href="https://wa.me/5511920968189" target="_blank" rel="noopener" data-tn-magnet="1" style="font-family: 'Albert Sans', sans-serif; font-size: clamp(20px, 2vw, 28px); font-weight: 400; letter-spacing: -0.01em; display: inline-flex; align-items: center; gap: 12px; width: fit-content; transition: color 0.3s;" class="tn-hv-26">WhatsApp +55 11 92096 8189 <span style="font-size: 14px; opacity: 0.6; transition: transform 0.3s;">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="padding: 56px 40px 40px; border-top: 1px solid rgba(20,20,15,0.1); display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap;">
+  <div style="font-family: 'Albert Sans', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -0.01em;">TheNew<span style="color: #DC5A2E;">.ag</span></div>
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; display: flex; gap: 32px; flex-wrap: wrap;">
+    <span data-i18n="footer_location">São Paulo · Brasil</span>
+    <span>© MMXXVI</span>
+  </div>
+</footer>
+
+
+<script>
+const TN = {};
+document.addEventListener('DOMContentLoaded', function () {
+  setupProgress(); setupReveal(); setupParallax(); setupRail(); setupNavBg(); setupHero(); setupMagnet(); setupCursor(); setupBurger(); setupI18n();
+});
+function setupProgress() {
+  const bar = document.getElementById('tn-progress');
+  const update = () => { const h = document.documentElement; const scrolled = h.scrollTop; const max = h.scrollHeight - h.clientHeight; bar.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + '%'; };
+  window.addEventListener('scroll', update, { passive: true }); update();
+}
+function setupReveal() {
+  const els = document.querySelectorAll('[data-rv]');
+  els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(32px)'; el.style.transition = 'opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1)'; });
+  const io = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'none'; io.unobserve(entry.target); } }); }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  els.forEach(el => io.observe(el));
+}
+function setupParallax() {
+  const els = Array.from(document.querySelectorAll('[data-px]'));
+  const tick = () => { const vh = window.innerHeight; els.forEach(el => { const factor = parseFloat(el.dataset.px) || 0; const rect = el.parentElement.getBoundingClientRect(); const center = rect.top + rect.height / 2; const dist = (center - vh / 2) / vh; el.style.transform = 'translateY(' + (dist * factor * -10) + 'px)'; }); requestAnimationFrame(tick); };
+  tick();
+}
+function setupRail() {
+  const dots = Array.from(document.querySelectorAll('[data-tn-dot]'));
+  const label = document.getElementById('tn-rail-label');
+  const sections = dots.map(d => document.getElementById(d.dataset.tnDot)).filter(Boolean);
+  let labelTimer;
+  const setActive = (id, text) => { dots.forEach(d => { const on = d.dataset.tnDot === id; d.style.background = on ? '#DC5A2E' : 'rgba(20,20,15,0.25)'; d.style.transform = on ? 'scale(1.6)' : 'scale(1)'; }); label.textContent = text; label.style.opacity = '1'; clearTimeout(labelTimer); labelTimer = setTimeout(() => { label.style.opacity = '0'; }, 1200); };
+  const railIo = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const id = entry.target.id; const dot = dots.find(d => d.dataset.tnDot === id); if (dot) setActive(id, dot.dataset.tnLabel); } }); }, { threshold: 0.4 });
+  sections.forEach(s => railIo.observe(s));
+}
+function setupNavBg() {
+  const nav = document.getElementById('tn-nav'); const logo = document.getElementById('tn-logo'); const menu = document.getElementById('tn-menu');
+  const onScroll = () => { const scrolled = window.scrollY > 60; nav.style.background = scrolled ? 'rgba(250,250,249,0.92)' : 'transparent'; nav.style.backdropFilter = scrolled ? 'blur(10px)' : 'none'; nav.style.boxShadow = scrolled ? '0 1px 0 rgba(20,20,15,0.08)' : 'none'; nav.style.mixBlendMode = scrolled ? 'normal' : 'difference'; logo.style.color = scrolled ? '#14140F' : '#FAFAF9'; if (menu) menu.querySelectorAll('a, button').forEach(a => { a.style.color = scrolled ? '#14140F' : '#FAFAF9'; }); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+}
+function setupHero() {
+  const slides = Array.from(document.querySelectorAll('[data-tn-slide]'));
+  TN.heroLabelsPT = [['Honda · Campanha · 2025', 'Honda'], ['Aegea · Filme de marca · 2025', 'Aegea'], ['Caoa Changan · Filme & lançamento · 2025', 'Caoa Changan'], ["Le Soleil d'Été · Identidade & filme · 2025", "Le Soleil d'Été"]];
+  TN.heroLabelsEN = [['Honda · Campaign · 2025', 'Honda'], ['Aegea · Brand film · 2025', 'Aegea'], ['Caoa Changan · Film & launch · 2025', 'Caoa Changan'], ["Le Soleil d'Été · Identity & film · 2025", "Le Soleil d'Été"]];
+  const labelEl = document.getElementById('tn-hero-label'); const titleEl = document.getElementById('tn-hero-title');
+  TN.heroLabelEl = labelEl; TN.heroTitleEl = titleEl;
+  const progressEl = document.getElementById('tn-hero-progress'); const DURATION = 5000; let idx = 0; TN.getHeroIdx = () => idx;
+  slides.forEach((s, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'Slide ' + (i + 1)); b.style.cssText = 'width:28px;height:3px;background:rgba(250,250,249,0.35);border-radius:2px;padding:0;border:0;cursor:pointer;transition:background 0.3s;'; b.addEventListener('click', () => go(i)); progressEl.appendChild(b); });
+  const bars = Array.from(progressEl.children);
+  const play = (i) => { const v = slides[i].querySelector('video'); if (v) { try { v.currentTime = 0; v.play(); } catch (e) {} } };
+  const pause = (i) => { const v = slides[i].querySelector('video'); if (v) { try { v.pause(); } catch (e) {} } };
+  const go = (i) => { pause(idx); slides[idx].style.opacity = '0'; bars[idx].style.background = 'rgba(250,250,249,0.35)'; idx = ((i % slides.length) + slides.length) % slides.length; slides[idx].style.opacity = '1'; bars[idx].style.background = '#FAFAF9'; TN.updateHeroLabel(); play(idx); clearInterval(TN.heroTimer); TN.heroTimer = setInterval(() => go(idx + 1), DURATION); };
+  bars[0].style.background = '#FAFAF9'; play(0); TN.heroTimer = setInterval(() => go(idx + 1), DURATION);
+}
+TN.updateHeroLabel = function () { const labels = TN.lang === 'en' ? TN.heroLabelsEN : TN.heroLabelsPT; const cur = labels[TN.getHeroIdx ? TN.getHeroIdx() : 0]; if (cur) { TN.heroLabelEl.textContent = cur[0]; TN.heroTitleEl.textContent = cur[1]; } };
+function setupMagnet() { document.querySelectorAll('[data-tn-magnet]').forEach(el => { el.addEventListener('mousemove', (e) => { const r = el.getBoundingClientRect(); const x = (e.clientX - r.left - r.width / 2) * 0.25; const y = (e.clientY - r.top - r.height / 2) * 0.5; el.style.transform = 'translate(' + x + 'px,' + y + 'px)'; }); el.addEventListener('mouseleave', () => { el.style.transform = 'none'; }); }); }
+function setupCursor() { if ('ontouchstart' in window) return; const cursor = document.getElementById('tn-cursor'); window.addEventListener('mousemove', (e) => { cursor.style.transform = 'translate(' + (e.clientX - 13) + 'px,' + (e.clientY - 13) + 'px)'; }); document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => { cursor.style.width = '48px'; cursor.style.height = '48px'; cursor.style.background = 'rgba(20,20,15,0.08)'; }); el.addEventListener('mouseleave', () => { cursor.style.width = '26px'; cursor.style.height = '26px'; cursor.style.background = 'transparent'; }); }); }
+function setupBurger() { const burger = document.getElementById('tn-burger'); const overlay = document.getElementById('tn-mobile-menu'); if (!burger) return; let open = false; const toggle = () => { open = !open; overlay.style.transform = open ? 'translateY(0)' : 'translateY(-100%)'; overlay.style.opacity = open ? '1' : '0'; }; burger.addEventListener('click', toggle); overlay.querySelectorAll('[data-mm]').forEach(a => a.addEventListener('click', () => toggle())); }
+function setupI18n() {
+  TN.EN = {
+      nav_trabalho: 'Work', nav_servicos: 'Services', nav_metodo: 'Method', nav_estudio: 'Partners', nav_contato: 'Contact',
+      servicos_heading: 'Seven disciplines, one way of thinking.',
+      svc1_title: 'Strategy & naming', svc1_desc: 'Positioning, brand platform, naming and architecture. The work that defines what the brand believes, and what it will stop being.',
+      svc2_title: 'Identity & system', svc2_desc: 'Visual system, design and language. Identity as a brand decision, not a logo deliverable.',
+      svc3_title: 'Creative direction & campaign', svc3_desc: 'Concept, integrated campaign and narrative. The layer where strategy becomes something people feel.',
+      svc4_title: 'Retail & POS', svc4_desc: 'Identity applied to the point of sale, store communication, retail campaigns and packaging. A brand that has to work where the decision happens.',
+      svc5_title: 'Motion & audiovisual', svc5_desc: 'Brand films, social content, motion design and visual narratives. Premium language applied to the fastest-growing format.',
+      svc6_title: 'Experience & set design', svc6_desc: 'Events, immersive activations, retail design and immersive experiences. When the brand needs to become a place.',
+      svc7_title: 'Social & content', svc7_desc: 'Social media management, content creation and editorial calendar. The brand present every day, with consistency and direction.',
+      metodo_heading_rest: ', four phases, one direction.',
+      metodo_intro: 'A way of working, from diagnosis to application. Every project goes through the same four phases, in the same order, with the same senior direction from start to finish.',
+      fase1_label: 'PHASE 01', fase2_label: 'PHASE 02', fase3_label: 'PHASE 03', fase4_label: 'PHASE 04',
+      fase1_title: 'Diagnosis', fase1_desc: 'Understanding what the brand is today, what it is trying to be, and what stands in the way. Conversations, data, references.',
+      fase2_title: 'Decision', fase2_desc: 'Positioning, territory, promise. The part of the work no one sees, and that everything else stands on.',
+      fase3_title: 'System', fase3_desc: 'Identity, language, design. The brand takes shape, and above all, gains consistency.',
+      fase4_title: 'Application', fase4_desc: 'Campaigns, content, space, launch. Where the work meets the world.',
+      estudio_heading: 'Two partners, one way of working.',
+      bio1_role: 'Co-founder · Executive creative direction',
+      bio1_desc: 'Creative director with over 15 years in branding, advertising, retail experience, motion and art direction for Brazilian and international brands. Led projects in food service, premium retail, wellness and financial markets. Awarded at Cannes Lions and Clio Awards.',
+      bio2_role: 'Co-founder · Creative direction',
+      bio2_desc: 'Visual artist and creative director focused on motion design, audiovisual and visual experiences. Works on narrative building, conceptual films, drawing and animation, with artist residencies in Barcelona, Leipzig and Pivô Art, São Paulo.',
+      capacidades_label: 'Capabilities', clientes_label: 'Clients',
+      cap_dc: 'Creative direction', cap_ci: 'Integrated campaign', cap_varejo: 'Retail & POS', cap_emb: 'Packaging', cap_motion: 'Motion & audiovisual', cap_ceno: 'Set design', cap_exp: 'Immersive experience', cap_social: 'Social media management', cap_conteudo: 'Content creation',
+      contato_heading_main: 'Have a project, a brand, a decision to make? ',
+      contato_heading_cta: 'Tell us about it.',
+      footer_location: 'São Paulo · Brazil',
+      case_cat_1: 'NOAR · Digital scent & 4D immersion · 2025', case_cat_2: 'SOL · Luiza Gottschalk · 2025', case_cat_3: "Le Soleil d'Été · Cashmere campaign · 2026", case_cat_4: 'Evento AEGEA · 2025', case_cat_5: 'Retail, storefront & activation · 2026', case_cat_6: 'Branding, packaging & visual merchandising · 2026', case_cat_7: 'Content, editing & post-production · 2025', case_cat_8: 'Booth design & brand experience · 2025',
+      case_title_1: 'Sensory Experiences', case_title_2: 'Visual Experiences', case_title_3: 'Motion AI Graphics', case_title_4: 'Video Set Design', case_title_8: 'Booths',
+      case_body_1: 'Complete projects in creation, set design, activation and production of sensory experiences, from digital scent to 4D immersion, blending technology, emotion and narrative.',
+      case_body_2: 'Set design, creative direction and production for artists, brands and exhibitions, projects with strong aesthetic presence and visual unity.',
+      case_body_3: 'Visual narratives created between creative direction and artificial intelligence, films, motion graphics and original content with high impact.',
+      case_body_4: 'Visual content designed to occupy space: cenographic videos and immersive experiences that connect narrative, movement, light and architecture.',
+      case_body_5: 'Creative campaigns, striking window displays and activations that elevate the brand and the in-store experience, in a language aligned with Drogaria Iguatemi\'s premium positioning.',
+      case_body_6: 'Special branding, packaging and visual merchandising projects, with an automated process that delivers thousands of pieces per campaign to every store, ensuring visual consistency and operational speed.',
+      case_body_7: 'From concept to post-production: we handle every stage of creation, development and editing of videos and animations, ensuring quality, originality and impact in every delivery.',
+      case_body_8: 'Booth design and brand experience production that turn physical spaces into memorable touchpoints.'};
+  TN.heroInfoEN = "TheNew<span style=\"color: #DC5A2E;\">.ag</span><br />Creative studio<br />São Paulo";
+  TN.introTextEN = "We are a creative studio dedicated to <strong style=\"font-weight: 700; color: #DC5A2E;\">branding, creative direction, retail, motion and brand experience.</strong> We work with brands that need someone who thinks before executing, and who truly executes.";
+  const stored = localStorage.getItem('tn-lang');
+  const detected = navigator.language && navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en';
+  applyLanguage(stored || detected);
+  const toggleFn = (btn) => { if (!btn) return; btn.addEventListener('click', () => applyLanguage(TN.lang === 'en' ? 'pt' : 'en')); };
+  toggleFn(document.getElementById('tn-lang-toggle')); toggleFn(document.getElementById('tn-lang-toggle-mobile'));
+}
+function applyLanguage(lang) {
+  TN.lang = lang; localStorage.setItem('tn-lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (!el.dataset.i18nOrig) el.dataset.i18nOrig = el.textContent; el.textContent = (lang === 'en' && TN.EN[key] !== undefined) ? TN.EN[key] : el.dataset.i18nOrig; });
+  const heroInfo = document.getElementById('tn-hero-info');
+  if (heroInfo) { if (!heroInfo.dataset.i18nOrig) heroInfo.dataset.i18nOrig = heroInfo.innerHTML; heroInfo.innerHTML = lang === 'en' ? TN.heroInfoEN : heroInfo.dataset.i18nOrig; }
+  const introText = document.getElementById('tn-intro-text');
+  if (introText) { if (!introText.dataset.i18nOrig) introText.dataset.i18nOrig = introText.innerHTML; introText.innerHTML = lang === 'en' ? TN.introTextEN : introText.dataset.i18nOrig; }
+  if (TN.heroLabelEl) TN.updateHeroLabel();
+  const label = lang === 'en' ? 'PT' : 'EN';
+  const t1 = document.getElementById('tn-lang-toggle'); const t2 = document.getElementById('tn-lang-toggle-mobile');
+  if (t1) t1.textContent = label; if (t2) t2.textContent = label;
+}
+</script>
+</body>
+</html>
