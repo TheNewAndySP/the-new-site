@@ -60,7 +60,9 @@
 </div>
 
 <nav id="tn-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; transition: background 0.5s ease, padding 0.5s ease, box-shadow 0.5s ease; gap: 24px;">
-  <a href="#topo" style="font-family: 'Albert Sans', sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; position: relative; z-index: 2;" id="tn-logo">TheNew<span style="color: #DC5A2E;">.ag</span></a>
+  <a href="#topo" style="display: block; position: relative; z-index: 2; width: 118px;" id="tn-logo" aria-label="TheNew.ag">
+    <img id="tn-logo-img" src="assets/logo-dark.svg" alt="TheNew.ag" style="width: 100%; display: block;">
+  </a>
   <button class="tn-mobile-only" aria-label="Menu" id="tn-burger" style="width: 40px; height: 40px; border-radius: 100px; border: 1px solid rgba(20,20,15,0.2); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; position: relative; z-index: 2; cursor: pointer;">
       <span style="width: 16px; height: 1px; background: #14140F; display: block;"></span>
       <span style="width: 16px; height: 1px; background: #14140F; display: block;"></span>
@@ -330,7 +332,7 @@
 </section>
 
 <footer style="padding: 56px 40px 40px; border-top: 1px solid rgba(20,20,15,0.1); display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap;">
-  <div style="font-family: 'Albert Sans', sans-serif; font-size: 17px; font-weight: 600; letter-spacing: -0.01em;">TheNew<span style="color: #DC5A2E;">.ag</span></div>
+  <div style="width: 118px;"><img src="assets/logo-dark.svg" alt="TheNew.ag" style="width: 100%; display: block;"></div>
   <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #A3A39B; display: flex; gap: 32px; flex-wrap: wrap;">
     <span data-i18n="footer_location">São Paulo · Brasil</span>
     <span>© MMXXVI</span>
@@ -369,8 +371,8 @@ function setupRail() {
   sections.forEach(s => railIo.observe(s));
 }
 function setupNavBg() {
-  const nav = document.getElementById('tn-nav'); const logo = document.getElementById('tn-logo'); const menu = document.getElementById('tn-menu');
-  const onScroll = () => { const scrolled = window.scrollY > 60; nav.style.background = scrolled ? 'rgba(250,250,249,0.92)' : 'transparent'; nav.style.backdropFilter = scrolled ? 'blur(10px)' : 'none'; nav.style.boxShadow = scrolled ? '0 1px 0 rgba(20,20,15,0.08)' : 'none'; nav.style.mixBlendMode = scrolled ? 'normal' : 'difference'; logo.style.color = scrolled ? '#14140F' : '#FAFAF9'; if (menu) menu.querySelectorAll('a, button').forEach(a => { a.style.color = scrolled ? '#14140F' : '#FAFAF9'; }); };
+  const nav = document.getElementById('tn-nav'); const logoImg = document.getElementById('tn-logo-img'); const menu = document.getElementById('tn-menu');
+  const onScroll = () => { const scrolled = window.scrollY > 60; nav.style.background = scrolled ? 'rgba(250,250,249,0.92)' : 'transparent'; nav.style.backdropFilter = scrolled ? 'blur(10px)' : 'none'; nav.style.boxShadow = scrolled ? '0 1px 0 rgba(20,20,15,0.08)' : 'none'; nav.style.mixBlendMode = 'normal'; if (logoImg) logoImg.src = scrolled ? 'assets/logo-dark.svg' : 'assets/logo-light.svg'; if (menu) menu.querySelectorAll('a, button').forEach(a => { a.style.color = scrolled ? '#14140F' : '#FAFAF9'; }); };
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 }
 function setupHero() {
@@ -379,9 +381,10 @@ function setupHero() {
   TN.heroLabelsEN = [['Honda · Campaign · 2025', 'Honda'], ['Aegea · Brand film · 2025', 'Aegea'], ['Caoa Changan · Film & launch · 2025', 'Caoa Changan'], ["Le Soleil d'Été · Identity & film · 2025", "Le Soleil d'Été"]];
   const labelEl = document.getElementById('tn-hero-label'); const titleEl = document.getElementById('tn-hero-title');
   TN.heroLabelEl = labelEl; TN.heroTitleEl = titleEl;
-  const progressEl = document.getElementById('tn-hero-progress'); const DURATION = 5000; let idx = 0; TN.getHeroIdx = () => idx;
+  const progressEl = document.getElementById('tn-hero-progress'); const DURATION = 5000; const VIDEO_DURATION = 10; let idx = 0; TN.getHeroIdx = () => idx;
   slides.forEach((s, i) => { const b = document.createElement('button'); b.setAttribute('aria-label', 'Slide ' + (i + 1)); b.style.cssText = 'width:28px;height:3px;background:rgba(250,250,249,0.35);border-radius:2px;padding:0;border:0;cursor:pointer;transition:background 0.3s;'; b.addEventListener('click', () => go(i)); progressEl.appendChild(b); });
   const bars = Array.from(progressEl.children);
+  slides.forEach(s => { const v = s.querySelector('video'); if (v) v.addEventListener('timeupdate', () => { if (v.currentTime >= VIDEO_DURATION) v.currentTime = 0; }); });
   const play = (i) => { const v = slides[i].querySelector('video'); if (v) { try { v.currentTime = 0; v.play(); } catch (e) {} } };
   const pause = (i) => { const v = slides[i].querySelector('video'); if (v) { try { v.pause(); } catch (e) {} } };
   const go = (i) => { pause(idx); slides[idx].style.opacity = '0'; bars[idx].style.background = 'rgba(250,250,249,0.35)'; idx = ((i % slides.length) + slides.length) % slides.length; slides[idx].style.opacity = '1'; bars[idx].style.background = '#FAFAF9'; TN.updateHeroLabel(); play(idx); clearInterval(TN.heroTimer); TN.heroTimer = setInterval(() => go(idx + 1), DURATION); };
